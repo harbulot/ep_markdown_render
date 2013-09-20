@@ -1,0 +1,17 @@
+#renderedcontainer {
+    font-family: trebuchet MS, helvetica, sans-serif;
+    font-size: 12pt;
+}
+
+#renderedcontainer p {
+    padding-top: 10px;
+}
+
+#renderedcontainer pre {
+    padding-top: 10px;
+}
+
+#renderedcontainer li {
+    margin-left: 25px;
+}
+

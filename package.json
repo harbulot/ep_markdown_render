@@ -1,0 +1,27 @@
+{
+  "name": "ep_markdown_render",
+  "version": "0.1.0",
+  "keywords": [
+    "markdown"
+  ],
+  "description": "Renders the pad content as Markdown markup",
+  "contributors": [
+    {
+      "name": "Bruno Harbulot",
+      "email": "bruno@distributedmatter.net"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/harbulot/ep_markdown_render.git"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/harbulot/ep_markdown_render/issues"
+  },
+  "_id": "ep_markdown_render@0.1.0",
+  "_from": "ep_markdown_render@"
+}
