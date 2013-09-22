@@ -15,6 +15,8 @@ if (!isMobile) {
   };
   exports.documentReady = documentReady;
 
+  var renderedOnce = false;
+
   var postAceInit = function(hook, context){
     $('#editorcontainer').before($('<div id="renderedcontainer"></div>'));
     $('#editorcontainer').css({ left: '50%' });
@@ -26,13 +28,16 @@ if (!isMobile) {
       bottom: $('#editorcontainer').css('bottom'),
       "z-index": 1
     });
+    renderedOnce = false;
   };
   exports.postAceInit = postAceInit;
 
   var aceEditEvent = function(hook, context) {
-    if (context.callstack && context.callstack.repChanged && context.editorInfo && converter) {
+    var callstack = context.callstack;
+    if (callstack && (!renderedOnce || callstack.repChanged) && context.editorInfo && converter) {
       try {
         $('#renderedcontainer').html(converter.makeHtml(context.editorInfo.ace_exportText()));
+        renderedOnce = true;
         $('#renderedcontainer pre code').each(function(idx, item) {
           hljs.highlightBlock(item);
         });
