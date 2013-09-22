@@ -1,17 +1,59 @@
 #renderedcontainer {
     font-family: trebuchet MS, helvetica, sans-serif;
-    font-size: 12pt;
+    font-size: 150%;
 }
 
-#renderedcontainer p {
-    padding-top: 10px;
+
+#renderedcontainer blockquote {
+    border-left: 2px solid #888;
+    padding-left: 5px;
+    background: #f0f0f0;
+    margin-left: 30px;
+    margin-right: 30px
 }
 
-#renderedcontainer pre {
-    padding-top: 10px;
-}
 
-#renderedcontainer li {
-    margin-left: 25px;
-}
+#renderedcontainer h1
+{ margin: .67em 0 }
+
+#renderedcontainer h2
+{ margin: .75em 0 }
+
+#renderedcontainer h3
+{ margin: .83em 0 }
+
+#renderedcontainer h4,
+#renderedcontainer p,
+#renderedcontainer blockquote,
+#renderedcontainer ul,
+#renderedcontainer fieldset,
+#renderedcontainer form,
+#renderedcontainer ol,
+#renderedcontainer dl,
+#renderedcontainer dir,
+#renderedcontainer menu
+{ margin: 1.12em 0 }
+
+#renderedcontainer li p
+{ margin: 0 }
+
+#renderedcontainer h5
+{ margin: 1.5em 0 }
+
+#renderedcontainer h6
+{ margin: 1.67em 0 }
+
+#renderedcontainer ol,
+#renderedcontainer ul,
+#renderedcontainer dir,
+#renderedcontainer menu,
+#renderedcontainer dd
+{ margin-left: 30px }
+
+#renderedcontainer ol ul,
+#renderedcontainer ul ol,
+#renderedcontainer ul ul,
+#renderedcontainer ol ol
+{ margin-top: 0; margin-bottom: 0 }
+
 
