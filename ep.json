@@ -4,8 +4,8 @@
       "name": "markdown_render",
       "client_hooks": {
         "postAceInit": "ep_markdown_render/static/js/markdown_render:postAceInit",
-        "acePostWriteDomLineHTML": "ep_markdown_render/static/js/markdown_render:acePostWriteDomLineHTML",
-        "aceInitialized": "ep_markdown_render/static/js/markdown_render:aceInitialized"
+        "documentReady": "ep_markdown_render/static/js/markdown_render:documentReady",
+        "aceEditEvent": "ep_markdown_render/static/js/markdown_render:aceEditEvent"
       },
       "hooks": {
         "eejsBlock_styles": "ep_markdown_render/markdown_render"
