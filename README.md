@@ -4,7 +4,7 @@ This is a plugin for [Etherpad](http://etherpad.org/) that treats the pad's cont
 
 This relies on:
 
- * [PageDown](http://code.google.com/p/pagedown/)
+ * [Marked](https://github.com/chjj/marked)
  * [Highlight.js](http://softwaremaniacs.org/soft/highlight/en/)
 
 
