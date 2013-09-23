@@ -1,5 +1,7 @@
 
-Copyright (c) 2013 Bruno Harbulot
+MIT License. Please see copyright holders in each file.
+
+
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18,13 +20,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
------------------------------------------------------------------------------
-
-The contents of static/highlight.js/ and static/pagedown/ are not covered
-by this licence, but by their own licences, which can be found in these
-directories.
-
-The files in static/hallo also have their own licences.
 

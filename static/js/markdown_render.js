@@ -1,6 +1,9 @@
 var isMobile = $.browser.mobile;
 
 if (!isMobile) {
+  var editorInfo;
+  var padText;
+
   var documentReady = function(hook, context) {
     $.getScript('../static/plugins/ep_markdown_render/static/marked/marked.js', function() {
         marked.setOptions({
@@ -28,6 +31,32 @@ if (!isMobile) {
         $.getScript('../static/plugins/ep_markdown_render/static/highlight.js/highlight.pack.js', function() {
           hljs.selected_languages = hljs.LANGUAGES;
         });
+        $.getScript('../static/plugins/ep_markdown_render/static/hallo/jquery-ui.js', function() {
+          $.getScript('../static/plugins/ep_markdown_render/static/hallo/rangy-core.js', function() {
+            $.getScript('../static/plugins/ep_markdown_render/static/hallo/hallo.js', function() {
+            $.getScript('../static/plugins/ep_markdown_render/static/hallo/to-markdown.js', function() {
+                $('#renderedcontainer').hallo({
+                  plugins: {
+                    'halloformat': {},
+                    'halloheadings': {},
+                    'halloblock': {},
+                    'hallolists': {},
+                    //'halloreundo': {}
+                  },
+                  editable: true,
+                  toolbar: 'halloToolbarFixed' 
+                });
+                $('#renderedcontainer').bind('hallomodified', function(event, data) {
+                   var markdown = toMarkdown(data.content);
+                   if (padText == markdown) {
+                     return;
+                   }
+                   editorInfo.ace_importText(markdown);
+                });
+              });
+            });
+          });
+        });
     });
   };
   exports.documentReady = documentReady;
@@ -39,7 +68,8 @@ if (!isMobile) {
     $('#editorcontainer').css({ left: '50%' });
     $('#renderedcontainer').css({
       position: 'absolute',
-      top: $('#editorcontainer').css('top'),
+      //top: $('#editorcontainer').css('top'),
+      top: '50px',
       right: '50%',
       left: '10px',
       bottom: $('#editorcontainer').css('bottom'),
@@ -56,8 +86,11 @@ if (!isMobile) {
     if (callstack
           && (!renderedOnce || callstack.repChanged)
           && context.editorInfo
-          && marked) {
+          && marked
+          && !(callstack.editEvent && (callstack.editEvent.eventType==='importText' || callstack.editEvent.eventType==='applyChangesToBase'))) {
       try {
+        editorInfo = context.editorInfo;
+        padText = editorInfo.ace_exportText();
         $('#renderedcontainer').html(marked(context.editorInfo.ace_exportText()));
         renderedOnce = true;
       } catch (err) {

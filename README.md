@@ -6,6 +6,12 @@ This relies on:
 
  * [Marked](https://github.com/chjj/marked)
  * [Highlight.js](http://softwaremaniacs.org/soft/highlight/en/)
+ * [Hallo.js](http://hallojs.org/), which relies on:
+   * [jQuery-UI](http://jqueryui.com/)
+   * [jQuery-UI Bootstrap Theme](http://addyosmani.github.io/jquery-ui-bootstrap/)
+   * [FontAwesome](http://fortawesome.github.io/Font-Awesome/)
+   * [Rangy](http://code.google.com/p/rangy/)
+ * [to-markdown](https://github.com/domchristie/to-markdown)
 
 
 
@@ -26,3 +32,4 @@ You can try it by writing something like this:
                 System.out.println("Hello, World!");
             }
         }
+
