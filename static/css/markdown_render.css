@@ -56,4 +56,11 @@
 #renderedcontainer ol ol
 { margin-top: 0; margin-bottom: 0 }
 
+#renderedcontainer table
+{ border-collapse: collapse; border: 1px solid black; }
+  
+#renderedcontainer table td,
+#renderedcontainer table th
+{ border: 1px solid black; padding: 4px 8px; }
+
 

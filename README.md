@@ -26,3 +26,11 @@ You can try it by writing something like this:
                 System.out.println("Hello, World!");
             }
         }
+    
+    And tables:
+    
+    | Left-aligned | Centred | Right-aligned |
+    | ------------ |:-------:| -------------:|
+    | Item 1       |       £ |   10          |
+    | Item 2       |       € |   10          |
+    
