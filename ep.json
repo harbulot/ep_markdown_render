@@ -8,8 +8,10 @@
         "aceEditEvent": "ep_markdown_render/static/js/markdown_render:aceEditEvent"
       },
       "hooks": {
-        "eejsBlock_styles": "ep_markdown_render/markdown_render"
+        "eejsBlock_styles": "ep_markdown_render/markdown_render",
+        "eejsBlock_mySettings": "ep_markdown_render/markdown_render"
       }
+
     }
   ]
 }
