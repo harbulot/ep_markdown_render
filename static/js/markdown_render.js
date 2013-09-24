@@ -1,6 +1,8 @@
 var isMobile = $.browser.mobile;
 
 if (!isMobile) {
+  var mathJaxEnabled = false;
+ 
   var documentReady = function(hook, context) {
     $.getScript('../static/plugins/ep_markdown_render/static/marked/marked.js', function() {
         marked.setOptions({
@@ -28,6 +30,42 @@ if (!isMobile) {
         $.getScript('../static/plugins/ep_markdown_render/static/highlight.js/highlight.pack.js', function() {
           hljs.selected_languages = hljs.LANGUAGES;
         });
+
+
+        /*
+        // MathJax Option 1 (CDN):
+        //
+        // You can use the MathJax CDN, but check the terms of service.
+        // * http://docs.mathjax.org/en/latest/start.html#mathjax-cdn
+        // * http://www.mathjax.org/download/mathjax-cdn-terms-of-service/
+        // According to some comments, the MathJax project seems to encourage
+        // the use of its CDN.
+        $.getScript('http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
+          mathJaxEnabled = true;
+        });
+        // End of MathJax Option 1
+        */
+
+        // MathJax Option 2 (Local installation):
+        //
+        // Alternatively, install a local copy in the ./static/mathjax directory.
+        $.ajax({
+          url: '../static/plugins/ep_markdown_render/static/mathjax/MathJax.js',
+          dataType: "script",
+          cache: true,
+          success: function() {
+            MathJax.Hub.config.root = '../static/plugins/ep_markdown_render/static/mathjax';
+            $.ajax({
+              url: '../static/plugins/ep_markdown_render/static/mathjax/config/TeX-AMS-MML_HTMLorMML.js',
+              dataType: "script",
+              cache: true,
+              success: function() {
+                mathJaxEnabled = true;
+              }
+            });
+          }
+        });
+        // End of MathJax Option 2
     });
   };
   exports.documentReady = documentReady;
@@ -60,6 +98,10 @@ if (!isMobile) {
       try {
         $('#renderedcontainer').html(marked(context.editorInfo.ace_exportText()));
         renderedOnce = true;
+        if (mathJaxEnabled) {
+          var math = document.getElementById("renderedcontainer");
+          MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
+        }
       } catch (err) {
         console.log("Error when rendering the Markdown markup.", err);
       }
