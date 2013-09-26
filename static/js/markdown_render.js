@@ -76,14 +76,14 @@ var renderedOnce = false;
 var aceEditEvent = function(hook, context) {
   var callstack = context.callstack;
   if (callstack
-        && (!renderedOnce || callstack.repChanged)
+        && (!renderedOnce || callstack.docTextChanged)
         && context.editorInfo
         && marked) {
     try {
-        $('#renderedcontainer').html(marked(context.editorInfo.ace_exportText()));
+        $('#renderedcontent').html(marked(context.editorInfo.ace_exportText()));
         renderedOnce = true;
         if (mathJaxEnabled) {
-          var math = document.getElementById("renderedcontainer");
+          var math = document.getElementById("renderedcontent");
           MathJax.Hub.Queue(["Typeset",MathJax.Hub,math]);
         }
     } catch (err) {
@@ -96,12 +96,12 @@ exports.aceEditEvent = aceEditEvent;
 
 if (isMobile) {
   var postAceInit = function(hook, context){
-    $('#editorcontainer').before($('<div id="renderedcontainer"></div>'));
+    $('#editorcontainer').before($('<div id="renderedcontainer"><div style="position: relative; height: 100%;"><div id="renderedcontent"></div></div></div>'));
     $('#renderedcontainer').css({
       position: 'absolute',
       top: $('#editorcontainer').css('top'),
-      right: '5px',
-      left: '5px',
+      right: '0px',
+      left: '0px',
       bottom: $('#editorcontainer').css('bottom'),
       "z-index": 1
     });
@@ -123,15 +123,26 @@ if (isMobile) {
   exports.postAceInit = postAceInit;
 } else {
   var postAceInit = function(hook, context){
-    $('#editorcontainer').before($('<div id="renderedcontainer"></div>'));
-    $('#editorcontainer').css({ left: '50%' });
+    $('#editorcontainer').before($('<div id="renderedcontainer"><div style="position: relative; height: 100%;"><div id="renderedcontent"></div></div></div>'));
+    $('#editorcontainer').css({ left: '50%', width: '50%' });
     $('#renderedcontainer').css({
       position: 'absolute',
       top: $('#editorcontainer').css('top'),
       right: '50%',
-      left: '10px',
+      left: '0px',
+      width: 'auto',
       bottom: $('#editorcontainer').css('bottom'),
       "z-index": 1
+    });
+    $('#renderedcontent').css({
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      left: 0,
+      bottom: 0,
+      "z-index": 1,
+      padding: '8px',
+      overflow: 'scroll'
     });
     renderedOnce = false;
     pad.changeViewOption('useMonospaceFont', true);
